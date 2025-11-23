@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7E0CKPXJST"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7E0CKPXJST');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>WTP - تصميم محطات معالجة المياه</title>
+    <style>
+        :root {
+            --primary-color: #1a2a6c;
+            --secondary-color: #0077b5;
+            --accent-color: #00a8ff;
+            --light-color: #f5f7fa;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --text-color: #333;
+            --text-light: #666;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary-color), #0077b5, var(--accent-color));
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: var(--light-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius);
+            padding: 50px 40px;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header {
+            margin-bottom: 40px;
+        }
+        
+        .main-title {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: var(--light-color);
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, var(--light-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--light-color);
+            margin-bottom: 5px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .full-name {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: var(--light-color);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .option-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            border-radius: var(--border-radius);
+            padding: 35px 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .option-card:hover::before {
+            left: 100%;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .option-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .option-card:hover .option-icon {
+            transform: scale(1.1);
+        }
+        
+        .option-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .option-description {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+        
+        .back-btn {
+            margin-top: 50px;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+        
+        .back-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+            transform: scale(1.08);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .content {
+            margin: 30px 0;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .top-back-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+        }
+        
+        .top-back-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+        
+        .subpage-container {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .subpage-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .subpage-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        
+        .subpage-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            z-index: 100;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+        
+        .developer-info {
+            margin-top: 50px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-size: 1.1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .developer-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 12px;
+            transition: var(--transition);
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+        }
+        
+        .developer-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* أنماط موحدة للحاسبات */
+        .calculator {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        /* إزالة العناوين الداخلية للحاسبات */
+        .calculator h1, .calculator h2 {
+            display: none;
+        }
+        
+        .instruction-banner {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(33, 150, 243, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0); }
+        }
+        
+        .instruction-banner i {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .instruction-text {
+            flex-grow: 1;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .calculator label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            position: relative;
+        }
+        
+        .calculator input, .calculator select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 20px 0;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: var(--transition);
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .calculator input:focus, .calculator select:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(0, 119, 181, 0.2);
+            outline: none;
+        }
+        
+        .calculator input::placeholder {
+            color: #aaa;
+        }
+        
+        .calculator button {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: var(--transition);
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        .calculator button:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .calculator button:active {
+            transform: translateY(0);
+        }
+        
+        .note {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: -15px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .result-message {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: rgba(46, 204, 113, 0.1);
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            color: var(--success-color);
+            display: none;
+            animation: fadeIn 0.5s;
+            border: 1px solid rgba(46, 204, 113, 0.2);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--dark-color);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+            font-weight: normal;
+        }
+        
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--dark-color) transparent transparent transparent;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: var(--border-radius);
+            color: white;
+            font-weight: bold;
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        
+        .alert-warning {
+            background-color: var(--warning-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .result-container {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: var(--border-radius);
+            border-right: 4px solid var(--secondary-color);
+            display: none;
+        }
+        
+        .result-value {
+            font-size: 20px;
+            color: var(--dark-color);
+            margin: 10px 0;
+        }
+        
+        .error {
+            color: var(--danger-color);
+            margin-top: 5px;
+            font-size: 14px;
+            display: none;
+        }
+
+        /* أنماط أيقونة RO الجديدة */
+        .ro-icon {
+            width: 60px;
+            height: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                margin: 15px;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .options {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .option-card {
+                padding: 25px 20px;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الصفحة الرئيسية -->
+    <div id="main-page" class="container">
+        <!-- زر تبديل اللغة -->
+        <div class="lang-switch">
+            <button class="lang-btn" id="languageToggle">
+                <span id="langText">English</span> 🌐
+            </button>
+        </div>
+        
+        <div class="header">
+            <h1 class="main-title">WTP</h1>
+            <p class="subtitle"> تصميم محطات معالجة المياه</p>
+        </div>
+        
+        <p id="mainSubtitle" class="subtitle">اختر أحد التطبيقات التالية:</p>
+        
+        <div class="options">
+            <!-- الحاسبة الكيميائية -->
+            <div class="option-card" id="chemistry-option">
+                <div class="option-icon">🧪</div>
+                <div class="option-title" id="chemistryTitle">الحاسبة الكيميائية</div>
+                <div class="option-description">حساب جرعات المواد الكيميائية ومعدلات التدفق</div>
+            </div>
+            
+            <!-- تصميم MMF -->
+            <div class="option-card" id="filter-option">
+                <div class="option-icon">
+                    <svg width="60" height="60" viewBox="0 0 50 50">
+                        <rect x="12" y="8" width="26" height="34" rx="3" fill="#3498db" stroke="#2980b9" stroke-width="1"/>
+                        <rect x="14" y="10" width="22" height="6" fill="#5dade2" rx="1"/>
+                        <text x="25" y="14" text-anchor="middle" font-size="3" fill="white">C</text>
+                        <rect x="14" y="18" width="22" height="6" fill="#5dade2" rx="1"/>
+                        <text x="25" y="22" text-anchor="middle" font-size="3" fill="white">S</text>
+                        <rect x="14" y="26" width="22" height="6" fill="#5dade2" rx="1"/>
+                        <text x="25" y="30" text-anchor="middle" font-size="3" fill="white">G</text>
+                        <rect x="20" y="2" width="10" height="6" fill="#2980b9" rx="1"/>
+                        <line x1="25" y1="0" x2="25" y2="2" stroke="#2980b9" stroke-width="2"/>
+                        <rect x="20" y="42" width="10" height="6" fill="#2980b9" rx="1"/>
+                        <line x1="25" y1="48" x2="25" y2="42" stroke="#2980b9" stroke-width="2"/>
+                        <polygon points="25,0 22,3 28,3" fill="#2980b9"/>
+                        <polygon points="25,48 22,45 28,45" fill="#2980b9"/>
+                        <circle cx="18" cy="12" r="0.8" fill="white"/>
+                        <circle cx="25" cy="12" r="0.8" fill="white"/>
+                        <circle cx="32" cy="12" r="0.8" fill="white"/>
+                        <circle cx="18" cy="36" r="0.8" fill="white"/>
+                        <circle cx="25" cy="36" r="0.8" fill="white"/>
+                        <circle cx="32" cy="36" r="0.8" fill="white"/>
+                    </svg>
+                </div>
+                <div class="option-title" id="filterTitle">  تصميم الفلاتر متعددة الوسائط </div>
+                <div class="option-description">تصميم فلاتر الوسائط المتعددة </div>
+            </div>
+            
+            <!-- تصميم الفلاتر الخرطوشية -->
+            <div class="option-card" id="cartridge-option">
+                <div class="option-icon">
+                    <svg width="60" height="60" viewBox="0 0 50 50">
+                        <rect x="15" y="5" width="20" height="40" rx="2" fill="#b0b0b0" stroke="#808080" stroke-width="0.5"/>
+                        <rect x="12" y="3" width="26" height="4" rx="2" fill="#909090"/>
+                        <line x1="25" y1="10" x2="25" y2="40" stroke="#606060" stroke-width="1.5"/>
+                        <rect x="18" y="12" width="4" height="26" rx="1" fill="#e0e0e0" stroke="#a0a0a0" stroke-width="0.5"/>
+                        <rect x="23" y="12" width="4" height="26" rx="1" fill="#e0e0e0" stroke="#a0a0a0" stroke-width="0.5"/>
+                        <rect x="28" y="12" width="4" height="26" rx="1" fill="#e0e0e0" stroke="#a0a0a0" stroke-width="0.5"/>
+                        <circle cx="12" cy="15" r="2" fill="#3498db"/>
+                        <line x1="10" y1="15" x2="15" y2="15" stroke="#3498db" stroke-width="1.5"/>
+                        <circle cx="38" cy="35" r="2" fill="#e74c3c"/>
+                        <line x1="35" y1="35" x2="40" y2="35" stroke="#e74c3c" stroke-width="1.5"/>
+                        <line x1="14" y1="15" x2="32" y2="35" stroke="#2ecc71" stroke-width="1" stroke-dasharray="3,2"/>
+                        <polygon points="32,35 30,33 34,33" fill="#2ecc71"/>
+                        <rect x="18" y="45" width="3" height="3" fill="#707070"/>
+                        <rect x="29" y="45" width="3" height="3" fill="#707070"/>
+                    </svg>
+                </div>
+                <div class="option-title" id="cartridgeTitle">الفلاتر الخرطوشية</div>
+                <div class="option-description">تصميم أنظمة الفلاتر الخرطوشية  Pressure Vessels</div>
+            </div>
+            
+            <!-- حساب عدد أغشية التناضح العكسي -->
+            <div class="option-card" id="ro-option">
+                <div class="option-icon">
+                    <!-- أيقونة RO الجديدة -->
+                    <svg class="ro-icon" viewBox="0 0 840 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                        <!-- base -->
+                        <rect x="40" y="330" width="760" height="40" rx="6" fill="#0b63b8" />
+
+                        <!-- vertical supports -->
+                        <g fill="#0b63b8">
+                            <rect x="100" y="60" width="18" height="270" rx="4"/>
+                            <rect x="360" y="60" width="18" height="270" rx="4"/>
+                            <rect x="620" y="60" width="18" height="270" rx="4"/>
+                        </g>
+
+                        <!-- horizontal rails -->
+                        <g fill="#0b63b8">
+                            <rect x="120" y="80" width="520" height="10" rx="4"/>
+                            <rect x="120" y="140" width="520" height="10" rx="4"/>
+                            <rect x="120" y="200" width="520" height="10" rx="4"/>
+                            <rect x="120" y="260" width="520" height="10" rx="4"/>
+                        </g>
+
+                        <!-- membranes: only end caps at ends -->
+                        <g stroke="rgba(0,0,0,0.06)" stroke-width="1">
+                            <!-- row 1 -->
+                            <g transform="translate(140,52)">
+                                <rect x="0" y="6" width="560" height="28" rx="18" fill="#f5f7f8"/>
+                                <circle cx="-6" cy="20" r="12" fill="#111"/>
+                                <circle cx="566" cy="20" r="12" fill="#111"/>
+                            </g>
+                            <!-- row 2 -->
+                            <g transform="translate(140,112)">
+                                <rect x="0" y="6" width="560" height="28" rx="18" fill="#f5f7f8"/>
+                                <circle cx="-6" cy="20" r="12" fill="#111"/>
+                                <circle cx="566" cy="20" r="12" fill="#111"/>
+                            </g>
+                            <!-- row 3 -->
+                            <g transform="translate(140,172)">
+                                <rect x="0" y="6" width="560" height="28" rx="18" fill="#f5f7f8"/>
+                                <circle cx="-6" cy="20" r="12" fill="#111"/>
+                                <circle cx="566" cy="20" r="12" fill="#111"/>
+                            </g>
+                            <!-- row 4 -->
+                            <g transform="translate(140,232)">
+                                <rect x="0" y="6" width="560" height="28" rx="18" fill="#f5f7f8"/>
+                                <circle cx="-6" cy="20" r="12" fill="#111"/>
+                                <circle cx="566" cy="20" r="12" fill="#111"/>
+                            </g>
+                        </g>
+
+                        <!-- pump -->
+                        <g transform="translate(730,260)">
+                            <rect x="-48" y="-48" width="96" height="56" rx="6" fill="#1f6fb5"/>
+                            <circle cx="0" cy="-20" r="12" fill="#ff7a2d"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="option-title" id="roTitle">أغشية التناضح العكسي</div>
+                <div class="option-description">حساب عدد أغشية التناضح العكسي المطلوبة</div>
+            </div>
+        </div>
+        
+        <!-- قسم معلومات المطور -->
+        <div class="developer-info">
+            <p id="developerText">تم التطوير بواسطة <strong>Mohamed Medhat</strong></p>
+            <div class="developer-links">
+                <a href="https://www.linkedin.com/in/mohamed-medhat-35333b15a/" target="_blank">
+                    <span id="linkedinText">لينكدإن</span>
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة الكيمياء -->
+    <div id="chemistry-page" class="container hidden">
+        <!-- زر تبديل اللغة -->
+        <div class="lang-switch">
+            <button class="lang-btn" id="languageToggleChemistry">
+                <span id="langTextChemistry">English</span> 🌐
+            </button>
+        </div>
+        
+        <!-- زر الرجوع العلوي -->
+        <a href="#" class="top-back-btn" id="back-from-chemistry-top">
+            <span>←</span>
+            <span id="backTextChemistry">رجوع</span>
+        </a>
+        
+        <h2 id="chemistryPageTitle">الحاسبة الكيميائية</h2>
+        
+        <!-- حاوية المحتوى القابلة للتمرير -->
+        <div class="subpage-container">
+            <!-- محتوى حاسبة الكيمياء -->
+            <div class="calculator" id="chemistry-calculator">
+                <!-- العنوان تم إزالته -->
+                
+                <!-- Instruction Banner -->
+                <div class="instruction-banner" id="instructionBanner">
+                    <i class="fas fa-info-circle"></i>
+                    <div class="instruction-text" id="instructionText">
+                        أدخل أي 4 قيم لحساب القيمة الخامسة (اترك الحقل الذي تريد حسابه فارغاً)
+                    </div>
+                </div>
+
+                <!-- Alert Box -->
+                <div class="alert alert-warning" id="alertBox"></div>
+                
+                <label id="concentrationLabel">
+                    <span class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="tooltiptext" id="concentrationTooltip">النسبة المئوية لتركيز المادة الكيميائية</span>
+                    </span>
+                    <span id="concentrationLabelText">التركيز (%):</span>
+                </label>
+                <input type="number" id="concentration" placeholder="أدخل التركيز كنسبة مئوية">
+                <div class="note" id="concentrationNote">مثال: 50 لـ 50%</div>
+                
+                <label id="densityLabel">
+                    <span class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="tooltiptext" id="densityTooltip">الكثافة النوعية للمادة الكيميائية</span>
+                    </span>
+                    <span id="densityLabelText">الكثافة النوعية:</span>
+                </label>
+                <input type="number" id="density" placeholder="أدخل الكثافة النوعية">
+                <div class="note" id="densityNote">مثال: 1.2</div>
+                
+                <label id="waterLabel">
+                    <span class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="tooltiptext" id="waterTooltip">حجم المياه المراد معالجتها</span>
+                    </span>
+                    <span id="waterLabelText">كمية المياه (م³/ساعة):</span>
+                </label>
+                <input type="number" id="water" placeholder="أدخل كمية المياه">
+                <div class="note" id="waterNote">مثال: 50 م³/ساعة</div>
+                
+                <label id="ppmLabel">
+                    <span class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="tooltiptext" id="ppmTooltip">التركيز المطلوب بالجزء في المليون</span>
+                    </span>
+                    <span id="ppmLabelText">PPM (جزء في المليون):</span>
+                </label>
+                <input type="number" id="ppm" placeholder="أدخل التركيز المطلوب بالجزء من مليون">
+                <div class="note" id="ppmNote">مثال: 3.0 جزء من المليون</div>
+                
+                <label id="volumeLabel">
+                    <span class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="tooltiptext" id="volumeTooltip">معدل تدفق مضخة الجرعات</span>
+                    </span>
+                    <span id="volumeLabelText">معدل تدفق مضخة الجرعات (لتر/ساعة):</span>
+                </label>
+                <input type="number" id="volume" placeholder="أدخل معدل تدفق مضخة الجرعات">
+                <div class="note" id="volumeNote">مثال: 10 لتر/ساعة</div>
+                
+                <button onclick="calculate()" id="calculateBtn">حساب</button>
+                
+                <div id="resultMessage" class="result-message"></div>
+            </div>
+        </div>
+        
+        <!-- زر الرجوع السفلي -->
+        <a href="#" class="back-btn" id="back-from-chemistry">
+            <span id="backToMainChemistry">العودة إلى الصفحة الرئيسية</span>
+        </a>
+        
+        <!-- قسم معلومات المطور - صفحة الكيمياء -->
+        <div class="developer-info">
+            <p id="developerTextChemistry">تم التطوير بواسطة <strong>Mohamed Medhat</strong></p>
+            <div class="developer-links">
+                <a href="https://www.linkedin.com/in/mohamed-medhat-35333b15a/" target="_blank">
+                    <span id="linkedinTextChemistry">لينكدإن</span>
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة الفلتر -->
+    <div id="filter-page" class="container hidden">
+        <!-- زر تبديل اللغة -->
+        <div class="lang-switch">
+            <button class="lang-btn" id="languageToggleFilter">
+                <span id="langTextFilter">English</span> 🌐
+            </button>
+        </div>
+        
+        <!-- زر الرجوع العلوي -->
+        <a href="#" class="top-back-btn" id="back-from-filter-top">
+            <span>←</span>
+            <span id="backTextFilter">رجوع</span>
+        </a>
+        
+        <h2 id="filterPageTitle">تصميم MMF</h2>
+        
+        <!-- حاوية المحتوى القابلة للتمرير -->
+        <div class="subpage-container">
+            <!-- محتوى تصميم MMF -->
+            <div class="calculator" id="mmf-calculator">
+                <!-- العنوان تم إزالته -->
+                <div class="form-group">
+                    <label for="q_product" id="qProductLabel">الإنتاجية (م³/ساعة):</label>
+                    <input type="number" id="q_product" step="0.01" placeholder="أدخل Q prod M3/hr">
+                    <div id="q_error" class="error">الرجاء إدخال قيمة صحيحة</div>
+                </div>
+                <div class="form-group">
+                    <label for="recovery" id="recoveryLabel">نسبة الاسترداد (%):</label>
+                    <input type="number" id="recovery" min="0" max="100" step="0.1" placeholder="أدخل نسبة الاسترداد">
+                    <div id="recovery_error" class="error">أدخل نسبة الاسترداد</div>
+                </div>
+                <div class="form-group">
+                    <label for="sdi" id="sdiLabel">مؤشر كثافة الطمي:</label>
+                    <select id="sdi">
+                        <option value="5.0" id="openIntake">مأخذ مفتوح</option>
+                        <option value="6.0" selected id="normalSDI">مؤشر كثافة الطمي عادي</option>
+                        <option value="7.0" id="sdiLess3">مؤشر كثافة الطمي < 3</option>
+                        <option value="8.0" id="sdiLess2">مؤشر كثافة الطمي < 2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filter_type" id="filterTypeLabel">نوع الفلتر:</label>
+                    <select id="filter_type">
+                        <option value="Multimedia" id="multimediaFilter">فلتر متعدد الوسائط</option>
+                        <option value="Sand" id="sandFilter">فلتر رملي</option>
+                    </select>
+                </div>
+                <button onclick="calculateMMF()" id="calculateMMFBtn">حساب</button>
+                <div id="mmf-result" class="result-container">
+                    <div class="result-value" id="d_value"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- زر الرجوع السفلي -->
+        <a href="#" class="back-btn" id="back-from-filter">
+            <span id="backToMainFilter">العودة إلى الصفحة الرئيسية</span>
+        </a>
+        
+        <!-- قسم معلومات المطور - صفحة الفلتر -->
+        <div class="developer-info">
+            <p id="developerTextFilter">تم التطوير بواسطة <strong>Mohamed Medhat</strong></p>
+            <div class="developer-links">
+                <a href="https://www.linkedin.com/in/mohamed-medhat-35333b15a/" target="_blank">
+                    <span id="linkedinTextFilter">لينكدإن</span>
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة الفلاتر الخرطوشية -->
+    <div id="cartridge-page" class="container hidden">
+        <!-- زر تبديل اللغة -->
+        <div class="lang-switch">
+            <button class="lang-btn" id="languageToggleCartridge">
+                <span id="langTextCartridge">English</span> 🌐
+            </button>
+        </div>
+        
+        <!-- زر الرجوع العلوي -->
+        <a href="#" class="top-back-btn" id="back-from-cartridge-top">
+            <span>←</span>
+            <span id="backTextCartridge">رجوع</span>
+        </a>
+        
+        <h2 id="cartridgePageTitle">تصميم الفلاتر الخرطوشية</h2>
+        
+        <!-- حاوية المحتوى القابلة للتمرير -->
+        <div class="subpage-container">
+            <!-- محتوى تصميم الفلاتر الخرطوشية -->
+            <div class="calculator" id="cartridge-calculator">
+                <!-- العنوان تم إزالته -->
+                <div class="form-group">
+                    <label for="flow" id="flowLabel">تدفق التغذية (م³/ساعة)</label>
+                    <input type="number" id="flow" step="0.1" min="0" value="10" placeholder="أدخل تدفق التغذية">
+                    <div id="flow_error" class="error">الرجاء إدخال قيمة صحيحة</div>
+                </div>
+                <div class="form-group">
+                    <label for="cartridge_type" id="typeLabel">نوع الخرطوشة</label>
+                    <select id="cartridge_type">
+                        <option value="nominal" id="nominalCartridge">خرطوشة عادية</option>
+                        <option value="high" id="highCartridge">خرطوشة تدفق عالي</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cartridge_length" id="lengthLabel">طول الخرطوشة (بوصة)</label>
+                    <select id="cartridge_length">
+                        <!-- سيتم تعبئة القائمة ديناميكياً -->
+                    </select>
+                </div>
+                <button onclick="calculateCartridge()" id="calculateCartridgeBtn">احسب</button>
+                <div id="cartridge-result" class="result-container">
+                    <div class="result-value" id="cartridge_value"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- زر الرجوع السفلي -->
+        <a href="#" class="back-btn" id="back-from-cartridge">
+            <span id="backToMainCartridge">العودة إلى الصفحة الرئيسية</span>
+        </a>
+        
+        <!-- قسم معلومات المطور - صفحة الفلاتر الخرطوشية -->
+        <div class="developer-info">
+            <p id="developerTextCartridge">تم التطوير بواسطة <strong>Mohamed Medhat</strong></p>
+            <div class="developer-links">
+                <a href="https://www.linkedin.com/in/mohamed-medhat-35333b15a/" target="_blank">
+                    <span id="linkedinTextCartridge">لينكدإن</span>
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة أغشية التناضح العكسي -->
+    <div id="ro-page" class="container hidden">
+        <!-- زر تبديل اللغة -->
+        <div class="lang-switch">
+            <button class="lang-btn" id="languageToggleRO">
+                <span id="langTextRO">English</span> 🌐
+            </button>
+        </div>
+        
+        <!-- زر الرجوع العلوي -->
+        <a href="#" class="top-back-btn" id="back-from-ro-top">
+            <span>←</span>
+            <span id="backTextRO">رجوع</span>
+        </a>
+        
+        <h2 id="roPageTitle">حساب عدد أغشية التناضح العكسي</h2>
+        
+        <!-- حاوية المحتوى القابلة للتمرير -->
+        <div class="subpage-container">
+            <!-- محتوى حساب أغشية التناضح العكسي -->
+            <div class="calculator" id="ro-calculator">
+                <!-- العنوان تم إزالته -->
+                <div class="form-group">
+                    <label for="flowRate" id="flowRateLabel">كمية المياه المطلوبة (م³/يوم)</label>
+                    <input type="number" id="flowRate" step="0.1" min="0" required placeholder="أدخل كمية المياه المطلوبة">
+                    <div id="flowRate_error" class="error">الرجاء إدخال قيمة صحيحة</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="waterType" id="waterTypeLabel">نوع المياه</label>
+                    <select id="waterType" required>
+                        <option value="">اختر نوع المياه</option>
+                        <option value="sea_open">مياه بحر مفتوحة</option>
+                        <option value="sea_well">مياه بحر من آبار</option>
+                        <option value="brackish_surface">مياه شبه مالحة سطحية</option>
+                        <option value="brackish_well">مياه شبه مالحة جوفية</option>
+                        <option value="ro_permeate">مياه ناتجة من تناضح عكسي</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="membraneArea" id="membraneAreaLabel">مساحة الغشاء</label>
+                    <select id="membraneArea" required>
+                        <option value="">اختر مساحة الغشاء</option>
+                        <option value="400">400 قدم²</option>
+                        <option value="440">440 قدم²</option>
+                    </select>
+                </div>
+                
+                <button onclick="calculateRO()" id="calculateROBtn">حساب عدد الأغشية</button>
+                
+                <div id="ro-result" class="result-container">
+                    <div class="result-value" id="ro_value"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- زر الرجوع السفلي -->
+        <a href="#" class="back-btn" id="back-from-ro">
+            <span id="backToMainRO">العودة إلى الصفحة الرئيسية</span>
+        </a>
+        
+        <!-- قسم معلومات المطور - صفحة أغشية التناضح العكسي -->
+        <div class="developer-info">
+            <p id="developerTextRO">تم التطوير بواسطة <strong>Mohamed Medhat</strong></p>
+            <div class="developer-links">
+                <a href="https://www.linkedin.com/in/mohamed-medhat-35333b15a/" target="_blank">
+                    <span id="linkedinTextRO">لينكدإن</span>
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Language Data - تضمين جميع أجزاء الموقع
+        const translations = {
+            en: {
+                // Main Page
+                mainTitle: "WTP",
+                mainSubtitle: "Water Treatment Plant Design ",
+                chemistryTitle: "Chemical Calculator",
+                filterTitle: "MMF Design",
+                cartridgeTitle: "Cartridge Filters",
+                roTitle: "RO Membranes",
+                developerText: "Developed by <strong>Mohamed Medhat</strong>",
+                linkedinText: "LinkedIn",
+                
+                // Chemistry Page
+                chemistryPageTitle: "Chemical Calculator",
+                backTextChemistry: "Back",
+                backToMainChemistry: "Back to Main Page",
+                
+                // Chemistry Calculator
+                appTitle: "Dosing Pump Flow Rate Calculator",
+                instructionText: "Enter any 4 values to calculate the 5th one (leave the field you want to calculate empty)",
+                concentrationLabel: "Concentration (%):",
+                concentrationTooltip: "Percentage concentration of the chemical",
+                concentrationPlaceholder: "Enter concentration %",
+                concentrationNote: "Example: 50 for 50%",
+                densityLabel: "Specific Gravity:",
+                densityTooltip: "Specific gravity of the chemical",
+                densityPlaceholder: "Enter specific gravity",
+                densityNote: "Example: 1.2",
+                waterLabel: "Water Volume (m³/hr):",
+                waterTooltip: "Volume of water to be treated",
+                waterPlaceholder: "Enter water volume",
+                waterNote: "Example: 50 m³/hr",
+                ppmLabel: "PPM (part per million):",
+                ppmTooltip: "Required concentration in parts per million",
+                ppmPlaceholder: "Enter final required PPM",
+                ppmNote: "Example: 3.0 PPM",
+                volumeLabel: "Dosing Pump Flow Rate (L/hr):",
+                volumeTooltip: "Dosing pump flow rate",
+                volumePlaceholder: "Enter Dosing Pump flow rate",
+                volumeNote: "Example: 10 L/hr",
+                calculateBtn: "Calculate",
+                resultPrefix: " value ",
+                alertNotEnough: "⚠️ Please enter at least 4 values to calculate the required parameter.",
+                alertTooMany: "⚠️ Please enter exactly 4 values and leave one field blank for calculation.",
+                
+                // Filter Page
+                filterPageTitle: "MMF Design",
+                backTextFilter: "Back",
+                backToMainFilter: "Back to Main Page",
+                
+                // MMF Calculator
+                mmfTitle: "MMF Design",
+                qProductLabel: "Product Flow (m³/hr):",
+                qErrorText: "Please enter a valid value",
+                recoveryLabel: "Recovery (%):",
+                recoveryErrorText: "Enter your recovery",
+                sdiLabel: "SDI:",
+                openIntake: "Open intake",
+                normalSDI: "Normal SDI",
+                sdiLess3: "SDI < 3",
+                sdiLess2: "SDI < 2",
+                filterTypeLabel: "Filter Type:",
+                multimediaFilter: "Multimedia Filter",
+                sandFilter: "Sand Filter",
+                calculateMMFBtn: "Calculate",
+                
+                // Cartridge Page
+                cartridgePageTitle: "Cartridge Filter Design",
+                backTextCartridge: "Back",
+                backToMainCartridge: "Back to Main Page",
+                
+                // Cartridge Calculator
+                flowLabel: "Feed Flow (m³/hr)",
+                flowErrorText: "Please enter a valid value",
+                typeLabel: "Cartridge Type",
+                nominalCartridge: "Nominal Cartridge Filter",
+                highCartridge: "High Flow Cartridge Filter",
+                lengthLabel: "Cartridge Length (inch)",
+                calculateCartridgeBtn: "Calculate",
+                resultText: "Required Cartridges: ",
+                alertCartridge: "Please enter a valid feed flow.",
+                
+                // RO Membranes Page
+                roPageTitle: "RO Membranes Calculator",
+                backTextRO: "Back",
+                backToMainRO: "Back to Main Page",
+                
+                // RO Membranes Calculator
+                roTitle: "RO Membranes Calculator",
+                flowRateLabel: "Required Water Quantity (m³/day)",
+                flowRateErrorText: "Please enter a valid value",
+                waterTypeLabel: "Water Type",
+                waterTypeOptions: {
+                    "": "Select water type",
+                    "sea_open": "Open Sea Water",
+                    "sea_well": "Sea Well Water",
+                    "brackish_surface": "Brackish Surface Water",
+                    "brackish_well": "Brackish Well Water",
+                    "ro_permeate": "RO Permeate Water"
+                },
+                membraneAreaLabel: "Membrane Area",
+                membraneAreaOptions: {
+                    "": "Select membrane area",
+                    "400": "400 ft²",
+                    "440": "440 ft²"
+                },
+                calculateROBtn: "Calculate Number of Membranes",
+                resultMembranesText: "Required Number of Membranes: ",
+                alertRO: "Please enter a valid water quantity.",
+                
+                // Common
+                langText: "العربية"
+            },
+            ar: {
+                // Main Page
+                mainTitle: "WTP",
+                mainSubtitle: " تصميم محطات معالجة المياه",
+                chemistryTitle: "الحاسبة الكيميائية",
+                filterTitle: " تصميم الفلاتر متعددة الوسائط ",
+                cartridgeTitle: "الفلاتر الخرطوشية",
+                roTitle: "أغشية التناضح العكسي",
+                developerText: "تم التطوير بواسطة <strong>Mohamed Medhat</strong>",
+                linkedinText: "لينكدإن",
+                
+                // Chemistry Page
+                chemistryPageTitle: "الحاسبة الكيميائية",
+                backTextChemistry: "رجوع",
+                backToMainChemistry: "العودة إلى الصفحة الرئيسية",
+                
+                // Chemistry Calculator
+                appTitle: "حاسبة معدل تدفق مضخة الجرعات",
+                instructionText: "أدخل أي 4 قيم لحساب القيمة الخامسة (اترك الحقل الذي تريد حسابه فارغاً)",
+                concentrationLabel: "التركيز (%):",
+                concentrationTooltip: "النسبة المئوية لتركيز المادة الكيميائية",
+                concentrationPlaceholder: "أدخل التركيز كنسبة مئوية",
+                concentrationNote: "مثال: 50 لـ 50%",
+                densityLabel: "الكثافة النوعية:",
+                densityTooltip: "الكثافة النوعية للمادة الكيميائية",
+                densityPlaceholder: "أدخل الكثافة النوعية",
+                densityNote: "مثال: 1.2",
+                waterLabel: "كمية المياه (م³/ساعة):",
+                waterTooltip: "حجم المياه المراد معالجتها",
+                waterPlaceholder: "أدخل كمية المياه",
+                waterNote: "مثال: 50 م³/ساعة",
+                ppmLabel: "PPM (جزء في المليون):",
+                ppmTooltip: "التركيز المطلوب بالجزء في المليون",
+                ppmPlaceholder: "أدخل التركيز المطلوب بالجزء من مليون",
+                ppmNote: "مثال: 3.0 جزء من المليون",
+                volumeLabel: "معدل تدفق مضخة الجرعات (لتر/ساعة):",
+                volumeTooltip: "معدل تدفق مضخة الجرعات",
+                volumePlaceholder: "أدخل معدل تدفق مضخة الجرعات",
+                volumeNote: "مثال: 10 لتر/ساعة",
+                calculateBtn: "حساب",
+                resultPrefix: " قيمة",
+                alertNotEnough: "⚠️ يجب إدخال 4 قيم على الأقل لحساب القيمة المطلوبة.",
+                alertTooMany: "⚠️ يجب إدخال 4 قيم فقط وترك الحقل الذي تريد حسابه فارغاً.",
+                
+                // Filter Page
+                filterPageTitle: " تصميم الفلاتر متعددة الوسائط ",
+                backTextFilter: "رجوع",
+                backToMainFilter: "العودة إلى الصفحة الرئيسية",
+                
+                // MMF Calculator
+                mmfTitle: " تصميم الفلاتر متعددة الوسائط ",
+                qProductLabel: "الإنتاجية (م³/ساعة):",
+                qErrorText: "الرجاء إدخال قيمة صحيحة",
+                recoveryLabel: "نسبة الاسترداد (%):",
+                recoveryErrorText: "أدخل نسبة الاسترداد",
+                sdiLabel: "مؤشر كثافة الطمي:",
+                openIntake: "مأخذ مفتوح",
+                normalSDI: "مؤشر كثافة الطمي عادي",
+                sdiLess3: "مؤشر كثافة الطمي < 3",
+                sdiLess2: "مؤشر كثافة الطمي < 2",
+                filterTypeLabel: "نوع الفلتر:",
+                multimediaFilter: "فلتر متعدد الوسائط",
+                sandFilter: "فلتر رملي",
+                calculateMMFBtn: "حساب",
+                
+                // Cartridge Page
+                cartridgePageTitle: "تصميم الفلاتر الخرطوشية",
+                backTextCartridge: "رجوع",
+                backToMainCartridge: "العودة إلى الصفحة الرئيسية",
+                
+                // Cartridge Calculator
+                flowLabel: "تدفق التغذية (م³/ساعة)",
+                flowErrorText: "الرجاء إدخال قيمة صحيحة",
+                typeLabel: "نوع الخرطوشة",
+                nominalCartridge: "خرطوشة عادية",
+                highCartridge: "خرطوشة تدفق عالي",
+                lengthLabel: "طول الخرطوشة (بوصة)",
+                calculateCartridgeBtn: "احسب",
+                resultText: "عدد الخراطيش المطلوب: ",
+                alertCartridge: "من فضلك أدخل تدفق التغذية بشكل صحيح.",
+                
+                // RO Membranes Page
+                roPageTitle: "حساب عدد أغشية التناضح العكسي",
+                backTextRO: "رجوع",
+                backToMainRO: "العودة إلى الصفحة الرئيسية",
+                
+                // RO Membranes Calculator
+                roTitle: "حساب عدد أغشية التناضح العكسي",
+                flowRateLabel: "كمية المياه المطلوبة (م³/يوم)",
+                flowRateErrorText: "الرجاء إدخال قيمة صحيحة",
+                waterTypeLabel: "نوع المياه",
+                waterTypeOptions: {
+                    "": "اختر نوع المياه",
+                    "sea_open": "مياه بحر مفتوحة",
+                    "sea_well": "مياه بحر من آبار",
+                    "brackish_surface": "مياه شبه مالحة سطحية",
+                    "brackish_well": "مياه شبه مالحة جوفية",
+                    "ro_permeate": "مياه ناتجة من تناضح عكسي"
+                },
+                membraneAreaLabel: "مساحة الغشاء",
+                membraneAreaOptions: {
+                    "": "اختر مساحة الغشاء",
+                    "400": "400 قدم²",
+                    "440": "440 قدم²"
+                },
+                calculateROBtn: "حساب عدد الأغشية",
+                resultMembranesText: "عدد الأغشية المطلوب: ",
+                alertRO: "يرجى إدخال كمية مياه صحيحة",
+                
+                // Common
+                langText: "English"
+            }
+        };
+
+        // تعريف المصفوفات للأطوال
+        const normalLengths = [10, 20, 30, 40, 50, 60, 70]; // حذفنا 80
+        const highFlowLengths = [20, 40, 60, 80];
+
+        // دالة لتحديث قائمة الأطوال
+        function updateLengthOptions() {
+            const type = document.getElementById('cartridge_type').value;
+            const lengthSelect = document.getElementById('cartridge_length');
+            const currentLength = parseInt(lengthSelect.value);
+            
+            // تحديد المصفوفة المناسبة
+            const availableLengths = (type === 'high') ? highFlowLengths : normalLengths;
+            
+            // مسح القائمة الحالية
+            lengthSelect.innerHTML = '';
+            
+            // إضافة الخيارات الجديدة
+            availableLengths.forEach(length => {
+                const option = document.createElement('option');
+                option.value = length;
+                option.textContent = length;
+                lengthSelect.appendChild(option);
+            });
+            
+            // تعيين القيمة المناسبة
+            if (availableLengths.includes(currentLength)) {
+                lengthSelect.value = currentLength;
+            } else {
+                lengthSelect.value = availableLengths[0];
+            }
+        }
+
+        // Language Management
+        let currentLang = 'ar';
+        
+        function updateLanguage() {
+            const langData = translations[currentLang];
+            
+            // Update direction and lang attribute
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+            
+            // Update Main Page
+            document.querySelector('.subtitle').textContent = langData.mainSubtitle;
+            document.getElementById('mainSubtitle').textContent = currentLang === 'ar' ? 'اختر أحد التطبيقات التالية:' : 'Choose one of the following applications:';
+            document.getElementById('chemistryTitle').textContent = langData.chemistryTitle;
+            document.getElementById('filterTitle').textContent = langData.filterTitle;
+            document.getElementById('cartridgeTitle').textContent = langData.cartridgeTitle;
+            document.getElementById('roTitle').textContent = langData.roTitle;
+            document.getElementById('developerText').innerHTML = langData.developerText;
+            document.getElementById('linkedinText').textContent = langData.linkedinText;
+            
+            // Update option descriptions
+            const optionDescriptions = document.querySelectorAll('.option-description');
+            if (optionDescriptions.length >= 4) {
+                optionDescriptions[0].textContent = currentLang === 'ar' ? 'حساب جرعات المواد الكيميائية ومعدلات التدفق' : 'Calculate chemical dosages and flow rates';
+                optionDescriptions[1].textContent = currentLang === 'ar' ? 'تصميم فلاتر الوسائط المتعددة ' : 'Design multimedia filters ';
+                optionDescriptions[2].textContent = currentLang === 'ar' ? 'تصميم أنظمة الفلاتر الخرطوشية ' : 'Design cartridge filter systems ';
+                optionDescriptions[3].textContent = currentLang === 'ar' ? 'حساب عدد أغشية التناضح العكسي المطلوبة' : 'Calculate required number of RO membranes';
+            }
+            
+            // Update Chemistry Page
+            document.getElementById('chemistryPageTitle').textContent = langData.chemistryPageTitle;
+            document.getElementById('backTextChemistry').textContent = langData.backTextChemistry;
+            document.getElementById('backToMainChemistry').textContent = langData.backToMainChemistry;
+            document.getElementById('developerTextChemistry').innerHTML = langData.developerText;
+            document.getElementById('linkedinTextChemistry').textContent = langData.linkedinText;
+            
+            // Update Chemistry Calculator
+            document.getElementById('instructionText').textContent = langData.instructionText;
+            document.getElementById('concentrationLabelText').textContent = langData.concentrationLabel;
+            document.getElementById('concentrationTooltip').textContent = langData.concentrationTooltip;
+            document.getElementById('concentration').placeholder = langData.concentrationPlaceholder;
+            document.getElementById('concentrationNote').textContent = langData.concentrationNote;
+            document.getElementById('densityLabelText').textContent = langData.densityLabel;
+            document.getElementById('densityTooltip').textContent = langData.densityTooltip;
+            document.getElementById('density').placeholder = langData.densityPlaceholder;
+            document.getElementById('densityNote').textContent = langData.densityNote;
+            document.getElementById('waterLabelText').textContent = langData.waterLabel;
+            document.getElementById('waterTooltip').textContent = langData.waterTooltip;
+            document.getElementById('water').placeholder = langData.waterPlaceholder;
+            document.getElementById('waterNote').textContent = langData.waterNote;
+            document.getElementById('ppmLabelText').textContent = langData.ppmLabel;
+            document.getElementById('ppmTooltip').textContent = langData.ppmTooltip;
+            document.getElementById('ppm').placeholder = langData.ppmPlaceholder;
+            document.getElementById('ppmNote').textContent = langData.ppmNote;
+            document.getElementById('volumeLabelText').textContent = langData.volumeLabel;
+            document.getElementById('volumeTooltip').textContent = langData.volumeTooltip;
+            document.getElementById('volume').placeholder = langData.volumePlaceholder;
+            document.getElementById('volumeNote').textContent = langData.volumeNote;
+            document.getElementById('calculateBtn').textContent = langData.calculateBtn;
+            
+            // Update Filter Page
+            document.getElementById('filterPageTitle').textContent = langData.filterPageTitle;
+            document.getElementById('backTextFilter').textContent = langData.backTextFilter;
+            document.getElementById('backToMainFilter').textContent = langData.backToMainFilter;
+            document.getElementById('developerTextFilter').innerHTML = langData.developerText;
+            document.getElementById('linkedinTextFilter').textContent = langData.linkedinText;
+            
+            // Update MMF Calculator
+            document.getElementById('qProductLabel').textContent = langData.qProductLabel;
+            document.getElementById('q_error').textContent = langData.qErrorText;
+            document.getElementById('q_product').placeholder = currentLang === 'ar' ? 'أدخل الإنتاجية M3/hr' : 'Enter product flow M3/hr';
+            document.getElementById('recoveryLabel').textContent = langData.recoveryLabel;
+            document.getElementById('recovery_error').textContent = langData.recoveryErrorText;
+            document.getElementById('recovery').placeholder = currentLang === 'ar' ? 'أدخل نسبة الاسترداد' : 'Enter your recovery';
+            document.getElementById('sdiLabel').textContent = langData.sdiLabel;
+            document.getElementById('openIntake').textContent = langData.openIntake;
+            document.getElementById('normalSDI').textContent = langData.normalSDI;
+            document.getElementById('sdiLess3').textContent = langData.sdiLess3;
+            document.getElementById('sdiLess2').textContent = langData.sdiLess2;
+            document.getElementById('filterTypeLabel').textContent = langData.filterTypeLabel;
+            document.getElementById('multimediaFilter').textContent = langData.multimediaFilter;
+            document.getElementById('sandFilter').textContent = langData.sandFilter;
+            document.getElementById('calculateMMFBtn').textContent = langData.calculateMMFBtn;
+            
+            // Update Cartridge Page
+            document.getElementById('cartridgePageTitle').textContent = langData.cartridgePageTitle;
+            document.getElementById('backTextCartridge').textContent = langData.backTextCartridge;
+            document.getElementById('backToMainCartridge').textContent = langData.backToMainCartridge;
+            document.getElementById('developerTextCartridge').innerHTML = langData.developerText;
+            document.getElementById('linkedinTextCartridge').textContent = langData.linkedinText;
+            
+            // Update Cartridge Calculator
+            document.getElementById('flowLabel').textContent = langData.flowLabel;
+            document.getElementById('flow_error').textContent = langData.flowErrorText;
+            document.getElementById('flow').placeholder = currentLang === 'ar' ? 'أدخل تدفق التغذية' : 'Enter feed flow';
+            document.getElementById('typeLabel').textContent = langData.typeLabel;
+            document.getElementById('nominalCartridge').textContent = langData.nominalCartridge;
+            document.getElementById('highCartridge').textContent = langData.highCartridge;
+            document.getElementById('lengthLabel').textContent = langData.lengthLabel;
+            document.getElementById('calculateCartridgeBtn').textContent = langData.calculateCartridgeBtn;
+            
+            // Update RO Membranes Page
+            document.getElementById('roPageTitle').textContent = langData.roPageTitle;
+            document.getElementById('backTextRO').textContent = langData.backTextRO;
+            document.getElementById('backToMainRO').textContent = langData.backToMainRO;
+            document.getElementById('developerTextRO').innerHTML = langData.developerText;
+            document.getElementById('linkedinTextRO').textContent = langData.linkedinText;
+            
+            // Update RO Membranes Calculator
+            document.getElementById('flowRateLabel').textContent = langData.flowRateLabel;
+            document.getElementById('flowRate_error').textContent = langData.flowRateErrorText;
+            document.getElementById('flowRate').placeholder = currentLang === 'ar' ? 'أدخل كمية المياه المطلوبة' : 'Enter required water quantity';
+            document.getElementById('waterTypeLabel').textContent = langData.waterTypeLabel;
+            document.getElementById('membraneAreaLabel').textContent = langData.membraneAreaLabel;
+            document.getElementById('calculateROBtn').textContent = langData.calculateROBtn;
+            
+            // Update water type options
+            const waterTypeSelect = document.getElementById('waterType');
+            const currentWaterTypeValue = waterTypeSelect.value;
+            waterTypeSelect.innerHTML = '';
+            for (const [value, text] of Object.entries(langData.waterTypeOptions)) {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = text;
+                waterTypeSelect.appendChild(option);
+            }
+            waterTypeSelect.value = currentWaterTypeValue;
+            
+            // Update membrane area options
+            const membraneAreaSelect = document.getElementById('membraneArea');
+            const currentMembraneAreaValue = membraneAreaSelect.value;
+            membraneAreaSelect.innerHTML = '';
+            for (const [value, text] of Object.entries(langData.membraneAreaOptions)) {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = text;
+                membraneAreaSelect.appendChild(option);
+            }
+            membraneAreaSelect.value = currentMembraneAreaValue;
+            
+            // Update language buttons
+            document.querySelectorAll('#langText, #langTextChemistry, #langTextFilter, #langTextCartridge, #langTextRO').forEach(el => {
+                el.textContent = langData.langText;
+            });
+            
+            // تحديث قائمة الأطوال عند تغيير اللغة
+            updateLengthOptions();
+        }
+
+        // Language Toggle Event Listeners
+        document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
+        document.getElementById('languageToggleChemistry').addEventListener('click', toggleLanguage);
+        document.getElementById('languageToggleFilter').addEventListener('click', toggleLanguage);
+        document.getElementById('languageToggleCartridge').addEventListener('click', toggleLanguage);
+        document.getElementById('languageToggleRO').addEventListener('click', toggleLanguage);
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            updateLanguage();
+        }
+
+        // Show Alert Function (for chemistry calculator)
+        function showAlert(message) {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.textContent = message;
+            alertBox.style.display = 'block';
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 5000);
+        }
+
+        // Calculation Function (for chemistry calculator)
+        function calculate() {
+            const volume = parseFloat(document.getElementById('volume').value);
+            let concentration = parseFloat(document.getElementById('concentration').value);
+            const density = parseFloat(document.getElementById('density').value);
+            const water = parseFloat(document.getElementById('water').value);
+            const ppm = parseFloat(document.getElementById('ppm').value);
+
+            const inputs = [
+                {value: concentration, id: 'concentration', name: currentLang === 'ar' ? 'التركيز' : 'Concentration', unit: currentLang === 'ar' ? '%' : '%'},
+                {value: density, id: 'density', name: currentLang === 'ar' ? 'الكثافة' : 'Density', unit: ''},
+                {value: water, id: 'water', name: currentLang === 'ar' ? 'كمية المياه' : 'Water Volume', unit: currentLang === 'ar' ? 'م³/ساعة' : 'm³/hr'},
+                {value: ppm, id: 'ppm', name: 'PPM', unit: currentLang === 'ar' ? 'جزء من المليون' : 'PPM'},
+                {value: volume, id: 'volume', name: currentLang === 'ar' ? 'معدل تدفق مضخة الجرعات' : 'Dosing Pump flow rate', unit: currentLang === 'ar' ? 'لتر/ساعة' : 'L/hr'}
+            ];
+
+            const knownValues = inputs.filter(input => !isNaN(input.value)).length;
+            
+            if (knownValues < 4) {
+                showAlert(translations[currentLang].alertNotEnough);
+                return;
+            }
+            
+            if (knownValues === 5) {
+                showAlert(translations[currentLang].alertTooMany);
+                return;
+            }
+            
+            if (!isNaN(concentration)) {
+                concentration = concentration / 100;
+            }
+
+            let result, emptyField, unit;
+            
+            if (isNaN(ppm)) {
+                emptyField = currentLang === 'ar' ? 'PPM' : 'PPM';
+                unit = currentLang === 'ar' ? 'جزء من المليون' : 'PPM';
+                result = (volume * concentration * density * 1000) / water;
+                document.getElementById('ppm').value = result.toFixed(2);
+            } 
+            else if (isNaN(volume)) {
+                emptyField = currentLang === 'ar' ? 'معدل تدفق مضخة الجرعات' : 'Dosing Pump flow rate';
+                unit = currentLang === 'ar' ? 'لتر/ساعة' : 'L/hr';
+                result = (ppm * water) / (concentration * density * 1000);
+                document.getElementById('volume').value = result.toFixed(2);
+            } 
+            else if (isNaN(concentration)) {
+                emptyField = currentLang === 'ar' ? 'التركيز' : 'Concentration';
+                unit = '%';
+                result = ((ppm * water) / (volume * density * 1000)) * 100;
+                document.getElementById('concentration').value = result.toFixed(2);
+            } 
+            else if (isNaN(density)) {
+                emptyField = currentLang === 'ar' ? 'الكثافة' : 'Density';
+                unit = '';
+                result = (ppm * water) / (volume * concentration * 1000);
+                document.getElementById('density').value = result.toFixed(2);
+            } 
+            else if (isNaN(water)) {
+                emptyField = currentLang === 'ar' ? 'كمية المياه' : 'Water Volume';
+                unit = currentLang === 'ar' ? 'م³/ساعة' : 'm³/hr';
+                result = (volume * concentration * density * 1000) / ppm;
+                document.getElementById('water').value = result.toFixed(2);
+            }
+            
+            const resultMessage = document.getElementById('resultMessage');
+            resultMessage.style.display = 'block';
+            resultMessage.innerHTML = currentLang === 'ar' 
+                ? `${translations[currentLang].resultPrefix} <strong>${emptyField}</strong>: <span style="color: #0077b5;">${result.toFixed(2)} ${unit}</span>` 
+                : `${translations[currentLang].resultPrefix} <strong>${emptyField}</strong>: <span style="color: #0077b5;">${result.toFixed(2)} ${unit}</span>`;
+        }
+
+        // MMF Calculation Function
+        function calculateMMF() {
+            document.getElementById('q_error').style.display = 'none';
+            document.getElementById('recovery_error').style.display = 'none';
+
+            let Q = parseFloat(document.getElementById('q_product').value);
+            const Recovery = parseFloat(document.getElementById('recovery').value);
+            const FSA = parseFloat(document.getElementById('sdi').value);
+            const filterType = document.getElementById('filter_type').value;
+
+            let isValid = true;
+            
+            if (isNaN(Q) || Q <= 0) {
+                document.getElementById('q_error').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isNaN(Recovery) || Recovery <= 0 || Recovery > 100) {
+                document.getElementById('recovery_error').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                document.getElementById('mmf-result').style.display = 'none';
+                return;
+            }
+
+            let numFilters = 1;
+            let D_inch = 0;
+            let selectedSize = null;
+
+            while (true) {
+                const Q_per_filter = Q / numFilters;
+                const numerator = 4.4 * Q_per_filter;
+                const denominator = Math.PI * FSA * (Recovery / 100);
+                const D_feet = 2 * Math.sqrt(numerator / denominator);
+                D_inch = D_feet * 12;
+
+                selectedSize = standardSizes.find(size => size.d >= D_inch);
+                if (!selectedSize) {
+                    numFilters++;
+                } else {
+                    break;
+                }
+            }
+
+            let resultHTML = currentLang === 'ar' 
+                ? `القطر النظري = ${D_inch.toFixed(1)}"<br>` 
+                : `Theoretical Diameter = ${D_inch.toFixed(1)}"<br>`;
+            
+            if (numFilters > 1) {
+                resultHTML += currentLang === 'ar' 
+                    ? `عدد الفلاتر = ${numFilters}<br>` 
+                    : `Number of Filters = ${numFilters}<br>`;
+            }
+            
+            resultHTML += currentLang === 'ar' 
+                ? `الحجم القياسي (قطر×ارتفاع) = ${selectedSize.d}"×${selectedSize.h}"` 
+                : `Standard Size D"xH" = ${selectedSize.d}"x${selectedSize.h}"`;
+
+            const sizeKey = `${selectedSize.d}x${selectedSize.h}`;
+            const media = mediaData[sizeKey]?.[filterType];
+            if (media) {
+                resultHTML += `<br><br><strong>${currentLang === 'ar' ? 'الوسائط المطلوبة:' : 'Required Media:'}</strong><br>`;
+                for (let [type, weight] of Object.entries(media)) {
+                    resultHTML += `${type}: ${weight} kg<br>`;
+                }
+            } else {
+                resultHTML += `<br><br><strong>${currentLang === 'ar' ? 'الوسائط المطلوبة:' : 'Required Media:'}</strong><br>${currentLang === 'ar' ? 'لا توجد بيانات متاحة لهذا الحجم ونوع الفلتر.' : 'No data available for this size and filter type.'}`;
+            }
+
+            document.getElementById('d_value').innerHTML = resultHTML;
+            document.getElementById('mmf-result').style.display = 'block';
+        }
+
+        // Cartridge Filter Calculation Function
+        function calculateCartridge() {
+            const flow = parseFloat(document.getElementById('flow').value);
+            const type = document.getElementById('cartridge_type').value;
+            const length = parseFloat(document.getElementById('cartridge_length').value);
+
+            if (isNaN(flow) || flow <= 0) {
+                alert(translations[currentLang].alertCartridge);
+                return;
+            }
+
+            // تحديد معدل التحميل الأساسي حسب النوع
+            let baseRate;
+            if (type === 'nominal') {
+                baseRate = 0.8; // 0.8 m³/hr for 10-inch nominal cartridge
+            } else if (type === 'high') {
+                baseRate = 20; // 20 m³/hr for 20-inch high flow cartridge
+            }
+
+            // حساب معدل التحميل الفعلي بناءً على الطول
+            let ratePerCartridge;
+            if (type === 'nominal') {
+                ratePerCartridge = baseRate * (length / 10);
+            } else if (type === 'high') {
+                ratePerCartridge = baseRate * (length / 20);
+            }
+
+            const filterCount = Math.ceil(flow / ratePerCartridge);
+
+            const output = document.getElementById('cartridge_value');
+            const resultDiv = document.getElementById('cartridge-result');
+            resultDiv.style.display = 'block';
+            output.textContent = translations[currentLang].resultText + filterCount;
+        }
+
+        // RO Membranes Calculation Function
+        function calculateRO() {
+            document.getElementById('flowRate_error').style.display = 'none';
+
+            const flowRate = parseFloat(document.getElementById('flowRate').value);
+            const waterType = document.getElementById('waterType').value;
+            const membraneArea = document.getElementById('membraneArea').value;
+
+            let isValid = true;
+            
+            if (isNaN(flowRate) || flowRate <= 0) {
+                document.getElementById('flowRate_error').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!waterType) {
+                alert(currentLang === 'ar' ? 'يرجى اختيار نوع المياه' : 'Please select water type');
+                isValid = false;
+            }
+            
+            if (!membraneArea) {
+                alert(currentLang === 'ar' ? 'يرجى اختيار مساحة الغشاء' : 'Please select membrane area');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                document.getElementById('ro-result').style.display = 'none';
+                return;
+            }
+
+            // تحديد قيمة الفلوكس بناءً على نوع المياه
+            let flux;
+            switch(waterType) {
+                case 'sea_open':
+                    flux = 10; // متوسط 9-11
+                    break;
+                case 'sea_well':
+                    flux = 8; // متوسط 7-9
+                    break;
+                case 'brackish_surface':
+                    flux = 12; // متوسط 11-13
+                    break;
+                case 'brackish_well':
+                    flux = 16; // متوسط 15-17
+                    break;
+                case 'ro_permeate':
+                    flux = 20; // متوسط 19-21
+                    break;
+                default:
+                    flux = 10;
+            }
+            
+            // حساب عدد الأغشية باستخدام المعادلة: N = (Qp × 1000) / (3.758 × J × A)
+            const area = parseFloat(membraneArea);
+            const membranesCount = Math.ceil((flowRate * 1000) / (3.758 * flux * area));
+            
+            // عرض النتائج
+            const output = document.getElementById('ro_value');
+            const resultDiv = document.getElementById('ro-result');
+            resultDiv.style.display = 'block';
+            
+            if (currentLang === 'ar') {
+                output.innerHTML = `${translations[currentLang].resultMembranesText} <strong>${membranesCount}</strong> غشاء<br>لإنتاج <strong>${flowRate}</strong> م³/يوم`;
+            } else {
+                output.innerHTML = `${translations[currentLang].resultMembranesText} <strong>${membranesCount}</strong> Membranes<br>To produce <strong>${flowRate}</strong> m³/day`;
+            }
+        }
+
+        // Page Navigation
+        const mainPage = document.getElementById('main-page');
+        const chemistryPage = document.getElementById('chemistry-page');
+        const filterPage = document.getElementById('filter-page');
+        const cartridgePage = document.getElementById('cartridge-page');
+        const roPage = document.getElementById('ro-page');
+        
+        const chemistryOption = document.getElementById('chemistry-option');
+        const filterOption = document.getElementById('filter-option');
+        const cartridgeOption = document.getElementById('cartridge-option');
+        const roOption = document.getElementById('ro-option');
+        
+        const backFromChemistry = document.getElementById('back-from-chemistry');
+        const backFromFilter = document.getElementById('back-from-filter');
+        const backFromCartridge = document.getElementById('back-from-cartridge');
+        const backFromRO = document.getElementById('back-from-ro');
+        const backFromChemistryTop = document.getElementById('back-from-chemistry-top');
+        const backFromFilterTop = document.getElementById('back-from-filter-top');
+        const backFromCartridgeTop = document.getElementById('back-from-cartridge-top');
+        const backFromROTop = document.getElementById('back-from-ro-top');
+        
+        // Add event listeners
+        chemistryOption.addEventListener('click', function() {
+            mainPage.classList.add('hidden');
+            chemistryPage.classList.remove('hidden');
+        });
+        
+        filterOption.addEventListener('click', function() {
+            mainPage.classList.add('hidden');
+            filterPage.classList.remove('hidden');
+        });
+        
+        cartridgeOption.addEventListener('click', function() {
+            mainPage.classList.add('hidden');
+            cartridgePage.classList.remove('hidden');
+        });
+        
+        roOption.addEventListener('click', function() {
+            mainPage.classList.add('hidden');
+            roPage.classList.remove('hidden');
+        });
+        
+        backFromChemistry.addEventListener('click', function(e) {
+            e.preventDefault();
+            chemistryPage.classList.add('hidden');
+            mainPage.classList.remove('hidden');
+        });
+        
+        backFromFilter.addEventListener('click', function(e) {
+            e.preventDefault();
+            filterPage.classList.add('hidden');
+            mainPage.classList.remove('hidden');
+        });
+        
+        backFromCartridge.addEventListener('click', function(e) {
+            e.preventDefault();
+            cartridgePage.classList.add('hidden');
+            mainPage.classList.remove('hidden');
+        });
+        
+        backFromRO.addEventListener('click', function(e) {
+            e.preventDefault();
+            roPage.classList.add('hidden');
+            mainPage.classList.remove('hidden');
+        });
+        
+        backFromChemistryTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            chemistryPage.classList.add('hidden');
+            mainPage.classList.remove('hidden');
+        });
+        
+        backFromFilterTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            filterPage.classList.add('hidden');
+            mainPage.classList.remove('hidden');
+        });
+        
+        backFromCartridgeTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            cartridgePage.classList.add('hidden');
+            mainPage.classList.remove('hidden');
+        });
+        
+        backFromROTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            roPage.classList.add('hidden');
+            mainPage.classList.remove('hidden');
+        });
+
+        // MMF Data
+        const standardSizes = [
+            {d: 10, h: 54},
+            {d: 13, h: 54},
+            {d: 14, h: 65},
+            {d: 16, h: 65},
+            {d: 18, h: 65},
+            {d: 21, h: 72},
+            {d: 24, h: 72},
+            {d: 30, h: 72},
+            {d: 36, h: 72},
+            {d: 48, h: 72},
+            {d: 63, h: 67}
+        ];
+
+        const mediaData = {
+          "10x54": { "Multimedia": { "Gravel": 25, "Sand": 25, "Carbon": 5 }, "Sand": { "Gravel": 25, "Sand": 50 } },
+          "13x54": { "Multimedia": { "Gravel": 35, "Sand": 35, "Carbon": 10 }, "Sand": { "Gravel": 35, "Sand": 80 } },
+          "14x65": { "Multimedia": { "Gravel": 60, "Sand": 50, "Carbon": 10 }, "Sand": { "Gravel": 60, "Sand": 125 } },
+          "16x65": { "Multimedia": { "Gravel": 85, "Sand": 65, "Carbon": 20 }, "Sand": { "Gravel": 75, "Sand": 150 } },
+          "18x65": { "Multimedia": { "Gravel": 100, "Sand": 100, "Carbon": 25 }, "Sand": { "Gravel": 100, "Sand": 200 } },
+          "21x72": { "Multimedia": { "Gravel": 125, "Sand": 125, "Carbon": 30 }, "Sand": { "Gravel": 125, "Sand": 250 } },
+          "24x72": { "Multimedia": { "Gravel": 200, "Sand": 200, "Carbon": 50 }, "Sand": { "Gravel": 200, "Sand": 300 } },
+          "30x72": { "Multimedia": { "Gravel": 275, "Sand": 275, "Carbon": 50 }, "Sand": { "Gravel": 275, "Sand": 375 } },
+          "36x72": { "Multimedia": { "Gravel": 400, "Sand": 300, "Carbon": 100 }, "Sand": { "Gravel": 400, "Sand": 600 } },
+          "48x72": { "Multimedia": { "Gravel": 700, "Sand": 700, "Carbon": 175 }, "Sand": { "Gravel": 700, "Sand": 1050 } },
+          "63x67": { "Multimedia": { "Gravel": 750, "Sand": 750, "Carbon": 250 }, "Sand": { "Gravel": 750, "Sand": 1350 } }
+        };
+
+        // إضافة event listener لتغيير النوع
+        document.getElementById('cartridge_type').addEventListener('change', updateLengthOptions);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLanguage();
+            updateLengthOptions(); // تعبئة القائمة أول مرة
+        });
+    </script>
+</body>
+</html>
